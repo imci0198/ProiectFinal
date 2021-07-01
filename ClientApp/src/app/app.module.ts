@@ -36,6 +36,9 @@ import { PharmacistsComponent } from './pharmacists/pharmacists.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
+      { path: 'products', component: ProductsComponent },
+      { path: 'pharmacists', component: PharmacistsComponent },
+      { path: 'pacients', component: PacientsComponent }
     ])
   ],
   providers: [

@@ -1,1 +1,29 @@
-<p>pacients works!</p>
+<h1 id="tableLabel">Pacients</h1>
+
+<p>This component lists the pacients.</p>
+
+<p *ngIf="!pacients"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="pacients">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Disease</th>
+      <th>ReceiptNr</th>
+      <th>ReceiptDescription</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pacient of pacients">
+      <td>{{ pacient.id }}</td>
+      <td>{{ pacient.name }}</td>
+      <td>{{ pacient.age }}</td>
+      <td>{{ pacient.disease }}</td>
+      <td>{{ pacient.receiptNr }}</td>
+      <td>{{ pacient.receiptDescription }}</td>
+    </tr>
+  </tbody>
+</table>
+

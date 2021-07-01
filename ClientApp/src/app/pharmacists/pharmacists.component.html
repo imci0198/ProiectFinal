@@ -1,1 +1,23 @@
-<p>pharmacists works!</p>
+<h1 id="tableLabel">Pharmacists</h1>
+
+<p>This component lists the pharmacists.</p>
+
+<p *ngIf="!pharmacists"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="pharmacists">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pharmacist of pharmacists">
+      <td>{{ pharmacist.id }}</td>
+      <td>{{ pharmacist.name }}</td>
+      <td>{{ pharmacist.role }}</td>
+    </tr>
+  </tbody>
+</table>
+
