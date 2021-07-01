@@ -21,11 +21,21 @@ namespace ProiectFinal.Controllers
             _context = context;
         }
 
+        [HttpGet]
+        [Route("filter/{minPrice}")]
+        public ActionResult<IEnumerable<Product>> FilterProducts(int minPrice)
+        {
+            return _context.Products.Where(p => p.Price >= minPrice).ToList();
+        }
         // GET: api/Product
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
+        public async Task<ActionResult<IEnumerable<Product>>> GetProducts(int? minPrice)
         {
-            return await _context.Products.ToListAsync();
+            if (minPrice == null)
+            {
+                return await _context.Products.ToListAsync();
+            }
+            return await _context.Products.Where(p => p.Price >= minPrice).ToListAsync();
         }
 
         // GET: api/Product/5

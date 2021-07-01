@@ -21,11 +21,22 @@ namespace ProiectFinal.Controllers
             _context = context;
         }
 
+        [HttpGet]
+        [Route("filter/{minAge}")]
+        public ActionResult<IEnumerable<Pacient>> FilterPacients(int minAge)
+        {
+            return  _context.Pacients.Where(a => a.Age >= minAge).ToList();
+        }
+
         // GET: api/Pacient
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Pacient>>> GetPacients()
+        public async Task<ActionResult<IEnumerable<Pacient>>> GetPacients(int? minAge)
         {
-            return await _context.Pacients.ToListAsync();
+            if (minAge == null)
+            {
+                return await _context.Pacients.ToListAsync();
+            }
+            return await _context.Pacients.Where(a => a.Age >= minAge).ToListAsync();
         }
 
         // GET: api/Pacient/5
