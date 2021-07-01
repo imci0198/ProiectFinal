@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProiectFinal.Data;
 using ProiectFinal.Models;
+using ProiectFinal.ViewModels;
 
 namespace ProiectFinal.Controllers
 {
@@ -40,16 +41,24 @@ namespace ProiectFinal.Controllers
 
         // GET: api/Product/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct(int id)
+        public async Task<ActionResult<ProductViewModel>> GetProduct(int id)
         {
             var product = await _context.Products.FindAsync(id);
+            var productViewModel = new ProductViewModel
+             {
+                Id = product.Id,
+                Name = product.Name,
+                Price = product.Price,
+                Description = product.Description,
+                WithRp = product.WithRp
+            };
 
             if (product == null)
             {
                 return NotFound();
             }
 
-            return product;
+            return productViewModel;
         }
 
         // PUT: api/Product/5
