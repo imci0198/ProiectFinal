@@ -13,6 +13,6 @@ namespace ProiectFinal.Models
         public String Name { get; set; }
         [Required]
         public String Role { get; set; }
-
+        public List<Pacient> Pacients { get; set; }
     }
 }

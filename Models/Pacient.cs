@@ -19,6 +19,7 @@ namespace ProiectFinal.Models
         public int ReceiptNr { get; set; }
         [Required]
         public String ReceiptDescription { get; set; }
-
+        public List<Product> Products { get; set; }
+        public Pharmacist Pharmacist { get; set; }
     }
 }

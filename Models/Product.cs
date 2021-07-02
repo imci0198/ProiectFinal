@@ -17,7 +17,7 @@ namespace ProiectFinal.Models
         public String Description { get; set; }
         [Required]
         public Boolean WithRp { get; set; }
-
+        public List<Pacient> Pacients { get; set; }
         
     }
 }
