@@ -13,6 +13,8 @@ using Microsoft.OpenApi.Models;
 using ProiectFinal.Data;
 using ProiectFinal.Models;
 using System;
+using System.Reflection;
+using System.IO;
 
 namespace ProiectFinal
 {
@@ -50,13 +52,14 @@ namespace ProiectFinal
                 configuration.RootPath = "ClientApp/dist";
             });
 
-            
+            services.AddMvc();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
                     Title = "ToDo API",
+
                     Description = "A simple example ASP.NET Core Web API",
                     TermsOfService = new Uri("https://example.com/terms"),
                     Contact = new OpenApiContact
@@ -73,11 +76,12 @@ namespace ProiectFinal
                 });
             });
         }
+    
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-
+            app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
